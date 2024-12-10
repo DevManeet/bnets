@@ -21,7 +21,7 @@ FROM base AS app
 ENV PYTHONUNBUFFERED=1
 ENV PORT=8080
 ENV APP_ENV=prod
-ENV PYTHONPATH="$PYTHONPATH:/home/worker/app/$PATH/"
+ENV PYTHONPATH="$PYTHONPATH:/home/worker/app/private_gpt/"
 EXPOSE 8080
 
 # Prepare a non-root user
@@ -43,9 +43,9 @@ RUN chown worker /home/worker/app
 RUN mkdir local_data && chown worker local_data
 RUN mkdir models && chown worker models
 COPY --chown=worker --from=dependencies /home/worker/app/.venv/ .venv
-COPY --chown=worker bnet/ bnet
+COPY --chown=worker private_gpt/ private_gpt
 COPY --chown=worker *.yaml .
 COPY --chown=worker scripts/ scripts
 
 USER worker
-ENTRYPOINT python -m bnet
+ENTRYPOINT python -m private_gpt
