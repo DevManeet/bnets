@@ -36,7 +36,7 @@ UI_TAB_TITLE = "BNET"
 
 SOURCES_SEPARATOR = "\n"
 
-
+'''
 file_name_map = {
     "- Procurement Guidelines.docx": "BNET Procurement Guidlines",
     "Final - Procurement Policy 002.pdf": "BNET Procurement Policy",
@@ -47,7 +47,7 @@ file_name_map1 = {
     "BNET Procurement Guidlines": "- Procurement Guidelines.docx",
     "BNET Procurement Policy": "Final - Procurement Policy 002.pdf",
     "EL Sijil Enterprise Architecture": "EL_Sijil_Enterprise Architecture_v0.135.docx",
-}
+}'''
 
 
 class Modes(str, Enum):
