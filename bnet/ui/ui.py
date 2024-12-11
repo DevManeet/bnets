@@ -310,12 +310,7 @@ class BnetUi:
             file_name = ingested_document.doc_metadata.get(
                 "file_name", "[FILE NAME MISSING]"
             )
-            try:
-                mapped_name = file_name_map.__getitem__(file_name)
-            except KeyError:
-                mapped_name = file_name
-            files.add(mapped_name)
-            #files.add(file_name_map.__getitem__(file_name))
+            files.add(file_name_map.__getitem__(file_name))
         return [[row] for row in files]
 
     def _upload_file(self, files: list[str]) -> None:
@@ -516,6 +511,12 @@ table.svelte-82jkx.svelte-82jkx {
   overflow: auto !important;
   height: 300px !important; /* Set a fixed height for the wrapper */
 }
+"""
+            """
+.footer { display: none !important;}
+"""
+            """
+footer.svelte-1rjryqp.svelte-1rjryqp.svelte-1rjryqp { display: none !important; }
 """
             """
 .eta-bar.svelte-au1olv.svelte-au1olv { background: #F4F4F4 !important;}
