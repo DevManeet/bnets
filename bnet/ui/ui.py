@@ -310,7 +310,12 @@ class BnetUi:
             file_name = ingested_document.doc_metadata.get(
                 "file_name", "[FILE NAME MISSING]"
             )
-            files.add(file_name_map.__getitem__(file_name))
+            try:
+                mapped_name = file_name_map.__getitem__(file_name)
+            except KeyError:
+                mapped_name = file_name
+            files.add(mapped_name)
+            #files.add(file_name_map.__getitem__(file_name))
         return [[row] for row in files]
 
     def _upload_file(self, files: list[str]) -> None:
