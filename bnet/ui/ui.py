@@ -310,6 +310,10 @@ class BnetUi:
             file_name = ingested_document.doc_metadata.get(
                 "file_name", "[FILE NAME MISSING]"
             )
+            try:
+                mapped_name = file_name_map.__getitem__(file_name)
+            except KeyError:
+                mapped_name = file_name
             files.add(file_name_map.__getitem__(file_name))
         return [[row] for row in files]
 
@@ -374,12 +378,13 @@ class BnetUi:
         ]
 
     def _selected_a_file(self, select_data: gr.SelectData) -> Any:
-        print("asdasfasf :  ", select_data.value)
+        
         try:
             self._selected_filename = file_name_map1.__getitem__(select_data.value)
         except:
             self._selected_filename = select_data.value
-
+        
+        print("asdasfasf :  ", select_data.value)
         print("\n\n\nSelected file name : ", self._selected_filename)
         print("\n\n\nSelected file data : ", select_data.value)
         return [
