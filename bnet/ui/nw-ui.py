@@ -36,19 +36,18 @@ UI_TAB_TITLE = "BNET"
 
 SOURCES_SEPARATOR = "\n"
 
-file_name_map = {}
+'''
+file_name_map = {
+    "- Procurement Guidelines.docx": "BNET Procurement Guidlines",
+    "Final - Procurement Policy 002.pdf": "BNET Procurement Policy",
+    "EL_Sijil_Enterprise Architecture_v0.135.docx": "EL Sijil Enterprise Architecture",
+}
 
-# file_name_map = {
-#     "- Procurement Guidelines.docx": "BNET Procurement Guidlines",
-#     "Final - Procurement Policy 002.pdf": "BNET Procurement Policy",
-#     "EL_Sijil_Enterprise Architecture_v0.135.docx": "EL Sijil Enterprise Architecture",
-# }
-
-# file_name_map1 = {
-#     "BNET Procurement Guidlines": "- Procurement Guidelines.docx",
-#     "BNET Procurement Policy": "Final - Procurement Policy 002.pdf",
-#     "EL Sijil Enterprise Architecture": "EL_Sijil_Enterprise Architecture_v0.135.docx",
-# }
+file_name_map1 = {
+    "BNET Procurement Guidlines": "- Procurement Guidelines.docx",
+    "BNET Procurement Policy": "Final - Procurement Policy 002.pdf",
+    "EL Sijil Enterprise Architecture": "EL_Sijil_Enterprise Architecture_v0.135.docx",
+}'''
 
 
 class Modes(str, Enum):
@@ -311,8 +310,11 @@ class BnetUi:
             file_name = ingested_document.doc_metadata.get(
                 "file_name", "[FILE NAME MISSING]"
             )
-            file_name_map.__setitem__(file_name.replace("_", " "), file_name)
-            files.add(file_name.replace("_", " "))
+            try:
+                mapped_name = file_name_map.__getitem__(file_name)
+            except KeyError:
+                mapped_name = file_name
+            files.add(file_name_map.__getitem__(file_name))
         return [[row] for row in files]
 
     def _upload_file(self, files: list[str]) -> None:
@@ -376,7 +378,15 @@ class BnetUi:
         ]
 
     def _selected_a_file(self, select_data: gr.SelectData) -> Any:
-        self._selected_filename = file_name_map.get(select_data.value)
+        
+        try:
+            self._selected_filename = file_name_map1.__getitem__(select_data.value)
+        except:
+            self._selected_filename = select_data.value
+        
+        print("asdasfasf :  ", select_data.value)
+        print("\n\n\nSelected file name : ", self._selected_filename)
+        print("\n\n\nSelected file data : ", select_data.value)
         return [
             gr.components.Button(interactive=False),
             gr.components.Button(interactive=False),
