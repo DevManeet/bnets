@@ -36,7 +36,7 @@ The available configuration options are:
 | **database**  | The specific database to connect to. Default is `postgres` |
 | **user**      | The username for database access. Default is `postgres` |
 | **password**  | The password for database access. (Required)            |
-| **schema_name** | The database schema to use. Default is `bnet`       |
+| **schema_name** | The database schema to use. Default is `private_gpt`       |
 
 For example:
 ```yaml
@@ -49,18 +49,18 @@ postgres:
   database: postgres
   user: postgres
   password: <PASSWORD>
-  schema_name: bnet
+  schema_name: private_gpt
 ```
 
 Given the above configuration, Two PostgreSQL tables will be created upon successful connection: one for storing metadata related to the index and another for document data itself.
 
 ```
-postgres=# \dt bnet.*
+postgres=# \dt private_gpt.*
                   List of relations
    Schema    |      Name       | Type  |    Owner     
 -------------+-----------------+-------+--------------
- bnet | data_docstore   | table | postgres
- bnet | data_indexstore | table | postgres
+ private_gpt | data_docstore   | table | postgres
+ private_gpt | data_indexstore | table | postgres
 
 postgres=# 
 ```

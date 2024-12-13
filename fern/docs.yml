@@ -1,9 +1,9 @@
 # Main Fern configuration file
 instances:
-  - url: bnet.docs.buildwithfern.com
-    custom-domain: docs.bnet.dev
+  - url: privategpt.docs.buildwithfern.com
+    custom-domain: docs.privategpt.dev
 
-title: bnet | Docs
+title: PrivateGPT | Docs
 
 # The tabs definition, in the top left corner
 tabs:
@@ -41,7 +41,7 @@ navigation:
         contents:
           - page: Quickstart
             path: ./docs/pages/quickstart/quickstart.mdx
-  # How to install bnet, with FAQ and troubleshooting
+  # How to install PrivateGPT, with FAQ and troubleshooting
   - tab: installation
     layout:
       - section: Getting started
@@ -52,7 +52,7 @@ navigation:
             path: ./docs/pages/installation/installation.mdx
           - page: Troubleshooting
             path: ./docs/pages/installation/troubleshooting.mdx
-  # Manual of bnet: how to use it and configure it
+  # Manual of PrivateGPT: how to use it and configure it
   - tab: manual
     layout:
       - section: General configuration
@@ -93,7 +93,7 @@ navigation:
         contents:
           - page: Summarize
             path: ./docs/pages/recipes/summarize.mdx
-  # More advanced usage of bnet, by API
+  # More advanced usage of PrivateGPT, by API
   - tab: api-reference
     layout:
       - section: Overview
@@ -111,7 +111,7 @@ navbar-links:
     text: Contact us
     url: "mailto:hello@zylon.ai"
   - type: github
-    value: "https://github.com/zylon-ai/bnet"
+    value: "https://github.com/zylon-ai/private-gpt"
   - type: primary
     text: Join the Discord
     url: https://discord.com/invite/bK6mRVpErU

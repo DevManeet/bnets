@@ -3,9 +3,11 @@ services:
   #-----------------------------------
   #---- Private-GPT services ---------
   #-----------------------------------
-    # Private-GPT service for the Ollama CPU and GPU modes
+
+  # Private-GPT service for the Ollama CPU and GPU modes
   # This service builds from an external Dockerfile and runs the Ollama mode.
   private-gpt-ollama:
+    image: ${PGPT_IMAGE:-zylonai/private-gpt}:${PGPT_TAG:-0.6.2}-ollama  # x-release-please-version
     user: root
     build:
       context: .
@@ -16,10 +18,10 @@ services:
       - "8001:8001"
     environment:
       PORT: 8001
-      BNET_PROFILES: docker
-      BNET_MODE: ollama
-      BNET_EMBED_MODE: ollama
-      BNET_OLLAMA_API_BASE: http://ollama:11434
+      PGPT_PROFILES: docker
+      PGPT_MODE: ollama
+      PGPT_EMBED_MODE: ollama
+      PGPT_OLLAMA_API_BASE: http://ollama:11434
       HF_TOKEN: ${HF_TOKEN:-}
     profiles:
       - ""
@@ -33,6 +35,7 @@ services:
   # Private-GPT service for the local mode
   # This service builds from a local Dockerfile and runs the application in local mode.
   private-gpt-llamacpp-cpu:
+    image: ${PGPT_IMAGE:-zylonai/private-gpt}:${PGPT_TAG:-0.6.2}-llamacpp-cpu # x-release-please-version
     user: root
     build:
       context: .
@@ -40,12 +43,12 @@ services:
     volumes:
       - ./local_data/:/home/worker/app/local_data
       - ./models/:/home/worker/app/models
-    entrypoint: sh -c ".venv/bin/python scripts/setup && .venv/bin/python -m bnet"
+    entrypoint: sh -c ".venv/bin/python scripts/setup && .venv/bin/python -m private_gpt"
     ports:
       - "8001:8001"
     environment:
       PORT: 8001
-      BNET_PROFILES: local
+      PGPT_PROFILES: local
       HF_TOKEN: ${HF_TOKEN:-}
     profiles:
       - llamacpp-cpu

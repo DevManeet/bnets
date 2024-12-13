@@ -5,4 +5,4 @@ groups:
         version: 0.6.2
         output:
           location: local-file-system
-          path: ../../bnet-sdk/python
+          path: ../../pgpt-sdk/python

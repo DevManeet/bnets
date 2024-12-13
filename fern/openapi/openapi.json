@@ -11,7 +11,7 @@
           "Contextual Completions"
         ],
         "summary": "Completion",
-        "description": "We recommend most users use our Chat completions API.\n\nGiven a prompt, the model will return one predicted completion.\n\nOptionally include a `system_prompt` to influence the way the LLM answers.\n\nIf `use_context`\nis set to `true`, the model will use context coming from the ingested documents\nto create the response. The documents being used can be filtered using the\n`context_filter` and passing the document IDs to be used. Ingested documents IDs\ncan be found using `/ingest/list` endpoint. If you want all ingested documents to\nbe used, remove `context_filter` altogether.\n\nWhen using `'include_sources': true`, the API will return the source Chunks used\nto create the response, which come from the context provided.\n\nWhen using `'stream': true`, the API will return data chunks following [OpenAI's\nstreaming model](https://platform.openai.com/docs/api-reference/chat/streaming):\n```\n{\"id\":\"12345\",\"object\":\"completion.chunk\",\"created\":1694268190,\n\"model\":\"bnet\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"Hello\"},\n\"finish_reason\":null}]}\n```",
+        "description": "We recommend most users use our Chat completions API.\n\nGiven a prompt, the model will return one predicted completion.\n\nOptionally include a `system_prompt` to influence the way the LLM answers.\n\nIf `use_context`\nis set to `true`, the model will use context coming from the ingested documents\nto create the response. The documents being used can be filtered using the\n`context_filter` and passing the document IDs to be used. Ingested documents IDs\ncan be found using `/ingest/list` endpoint. If you want all ingested documents to\nbe used, remove `context_filter` altogether.\n\nWhen using `'include_sources': true`, the API will return the source Chunks used\nto create the response, which come from the context provided.\n\nWhen using `'stream': true`, the API will return data chunks following [OpenAI's\nstreaming model](https://platform.openai.com/docs/api-reference/chat/streaming):\n```\n{\"id\":\"12345\",\"object\":\"completion.chunk\",\"created\":1694268190,\n\"model\":\"private-gpt\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"Hello\"},\n\"finish_reason\":null}]}\n```",
         "operationId": "prompt_completion_v1_completions_post",
         "requestBody": {
           "content": {
@@ -62,7 +62,7 @@
           "Contextual Completions"
         ],
         "summary": "Chat Completion",
-        "description": "Given a list of messages comprising a conversation, return a response.\n\nOptionally include an initial `role: system` message to influence the way\nthe LLM answers.\n\nIf `use_context` is set to `true`, the model will use context coming\nfrom the ingested documents to create the response. The documents being used can\nbe filtered using the `context_filter` and passing the document IDs to be used.\nIngested documents IDs can be found using `/ingest/list` endpoint. If you want\nall ingested documents to be used, remove `context_filter` altogether.\n\nWhen using `'include_sources': true`, the API will return the source Chunks used\nto create the response, which come from the context provided.\n\nWhen using `'stream': true`, the API will return data chunks following [OpenAI's\nstreaming model](https://platform.openai.com/docs/api-reference/chat/streaming):\n```\n{\"id\":\"12345\",\"object\":\"completion.chunk\",\"created\":1694268190,\n\"model\":\"bnet\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"Hello\"},\n\"finish_reason\":null}]}\n```",
+        "description": "Given a list of messages comprising a conversation, return a response.\n\nOptionally include an initial `role: system` message to influence the way\nthe LLM answers.\n\nIf `use_context` is set to `true`, the model will use context coming\nfrom the ingested documents to create the response. The documents being used can\nbe filtered using the `context_filter` and passing the document IDs to be used.\nIngested documents IDs can be found using `/ingest/list` endpoint. If you want\nall ingested documents to be used, remove `context_filter` altogether.\n\nWhen using `'include_sources': true`, the API will return the source Chunks used\nto create the response, which come from the context provided.\n\nWhen using `'stream': true`, the API will return data chunks following [OpenAI's\nstreaming model](https://platform.openai.com/docs/api-reference/chat/streaming):\n```\n{\"id\":\"12345\",\"object\":\"completion.chunk\",\"created\":1694268190,\n\"model\":\"private-gpt\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"Hello\"},\n\"finish_reason\":null}]}\n```",
         "operationId": "chat_completion_v1_chat_completions_post",
         "requestBody": {
           "content": {
@@ -345,7 +345,7 @@
           "Recipes"
         ],
         "summary": "Summarize",
-        "description": "Given a text, the model will return a summary.\n\nOptionally include `instructions` to influence the way the summary is generated.\n\nIf `use_context`\nis set to `true`, the model will also use the content coming from the ingested\ndocuments in the summary. The documents being used can\nbe filtered by their metadata using the `context_filter`.\nIngested documents metadata can be found using `/ingest/list` endpoint.\nIf you want all ingested documents to be used, remove `context_filter` altogether.\n\nIf `prompt` is set, it will be used as the prompt for the summarization,\notherwise the default prompt will be used.\n\nWhen using `'stream': true`, the API will return data chunks following [OpenAI's\nstreaming model](https://platform.openai.com/docs/api-reference/chat/streaming):\n```\n{\"id\":\"12345\",\"object\":\"completion.chunk\",\"created\":1694268190,\n\"model\":\"bnet\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"Hello\"},\n\"finish_reason\":null}]}\n```",
+        "description": "Given a text, the model will return a summary.\n\nOptionally include `instructions` to influence the way the summary is generated.\n\nIf `use_context`\nis set to `true`, the model will also use the content coming from the ingested\ndocuments in the summary. The documents being used can\nbe filtered by their metadata using the `context_filter`.\nIngested documents metadata can be found using `/ingest/list` endpoint.\nIf you want all ingested documents to be used, remove `context_filter` altogether.\n\nIf `prompt` is set, it will be used as the prompt for the summarization,\notherwise the default prompt will be used.\n\nWhen using `'stream': true`, the API will return data chunks following [OpenAI's\nstreaming model](https://platform.openai.com/docs/api-reference/chat/streaming):\n```\n{\"id\":\"12345\",\"object\":\"completion.chunk\",\"created\":1694268190,\n\"model\":\"private-gpt\",\"choices\":[{\"index\":0,\"delta\":{\"content\":\"Hello\"},\n\"finish_reason\":null}]}\n```",
         "operationId": "summarize_v1_summarize_post",
         "requestBody": {
           "content": {
@@ -668,9 +668,9 @@
           "model": {
             "type": "string",
             "enum": [
-              "bnet"
+              "private-gpt"
             ],
-            "const": "bnet",
+            "const": "private-gpt",
             "title": "Model"
           },
           "data": {
@@ -847,9 +847,9 @@
           "model": {
             "type": "string",
             "enum": [
-              "bnet"
+              "private-gpt"
             ],
-            "const": "bnet",
+            "const": "private-gpt",
             "title": "Model"
           },
           "data": {
@@ -909,9 +909,9 @@
           "model": {
             "type": "string",
             "enum": [
-              "bnet"
+              "private-gpt"
             ],
-            "const": "bnet",
+            "const": "private-gpt",
             "title": "Model"
           },
           "data": {
@@ -1085,9 +1085,9 @@
           "model": {
             "type": "string",
             "enum": [
-              "bnet"
+              "private-gpt"
             ],
-            "const": "bnet",
+            "const": "private-gpt",
             "title": "Model"
           },
           "choices": {
